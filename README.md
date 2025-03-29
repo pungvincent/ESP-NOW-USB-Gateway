@@ -9,6 +9,10 @@ A custom USB key that acts as a **gateway for ESP-NOW** communication instead of
 - **Unicast & Broadcast Support**: Can send messages to specific devices or broadcast to multiple nodes.
 - **Compatible with Home Automation**: Easily integrates with Python scripts, MQTT, and Home Assistant.
 
+Below is a rough schematic overview of the project:
+
+<img src="docs/images/Project_plan.jpg" alt="Project_plan" width="1500" height="600">
+
 ## Getting Started
 
 ### Hardware Requirements
