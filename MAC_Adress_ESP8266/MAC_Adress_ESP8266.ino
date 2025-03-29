@@ -1,8 +1,4 @@
-#ifdef ESP32
-  #include <WiFi.h>
-#else
-  #include <ESP8266WiFi.h>
-#endif
+#include <ESP8266WiFi.h>
 
 void setup() {
   Serial.begin(115200);
