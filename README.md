@@ -24,6 +24,18 @@ Below is a rough schematic overview of the project:
 - **ESP-IDF or Arduino IDE** to program the ESP.
 - **Python & PySerial** (for testing communication on PC).
 
+### Current project
+
+1. The sender (controller) sends a message ("Hello ESP-NOW!") to a receiver (slave) every 2 seconds.
+2. The receiver waits for incoming messages and prints them to the serial monitor.
+3. The sender confirms whether the message was successfully sent via a callback.
+4. Both devices initialize ESP-NOW and set roles (controller for the sender, slave for the receiver).
+5. The receiver processes incoming data through a callback function.
+
+Below is a rough schematic overview of the current project:
+
+<img src="docs/images/Current_project.jpg" alt="Current_project" width="800" height="400">
+
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
    ```bash
