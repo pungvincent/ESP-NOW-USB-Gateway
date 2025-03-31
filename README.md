@@ -26,15 +26,15 @@ Below is a rough schematic overview of the project:
 
 ### Current project
 
-1. The sender (controller) sends a message ("Hello ESP-NOW!") to a receiver (slave) every 2 seconds.
-2. The receiver waits for incoming messages and prints them to the serial monitor.
-3. The sender confirms whether the message was successfully sent via a callback.
-4. Both devices initialize ESP-NOW and set roles (controller for the sender, slave for the receiver).
-5. The receiver processes incoming data through a callback function.
+1. The ESP8266 listens for messages and toggles an LED based on the received command ("LED_TOGGLE", "LED_ON", or "LED_OFF"). It also sends a message when a button is pressed.
+2. The ESP32 waits for input from the user via the serial monitor ("TOGGLE", "ON", "OFF"). Based on the input, it sends a corresponding message to the ESP8266.
+3. Both devices use ESP-NOW to send and receive messages with each other, with callbacks handling sending and receiving statuses.
+4. The ESP8266 reacts to button presses by sending a message "BUTTON_PRESSED" to the ESP32, and the ESP32 sends commands to control the LED state on the ESP8266.
+5. The system allows remote control of the LED on the ESP8266 using the ESP32 through serial inputs.
 
 Below is a rough schematic overview of the current project:
 
-<img src="docs/images/Current_project.jpg" alt="Current_project" width="800" height="400">
+<img src="docs/images/Current_project_5.jpg" alt="Current_project_5" width="900" height="500">
 
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
