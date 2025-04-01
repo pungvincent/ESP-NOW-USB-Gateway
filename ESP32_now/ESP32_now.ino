@@ -1,8 +1,9 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-// MAC address of the peer
-uint8_t peerMac[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the MAC address of ESP8266
+// MAC addresses of the peers
+uint8_t peerMac1[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the MAC address of ESP8266-1
+uint8_t peerMac2[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the MAC address of ESP8266-2
 
 // Structure for ESP-NOW messages
 typedef struct {
@@ -41,7 +42,11 @@ void setup() {
     peerInfo.encrypt = false; // Encryption Off
 
     // Add the first peer
-    memcpy(peerInfo.peer_addr, peerMac, 6);
+    memcpy(peerInfo.peer_addr, peerMac1, 6);
+    esp_now_add_peer(&peerInfo);
+
+    // Add the second peer
+    memcpy(peerInfo.peer_addr, peerMac2, 6);
     esp_now_add_peer(&peerInfo);
 
     // Register the receive callback function
@@ -53,13 +58,16 @@ void loop() {
         String input = Serial.readStringUntil('\n');
         input.trim();
         if (input == "TOGGLE") {
-            sendMessage("LED_TOGGLE", peerMac);
+            sendMessage("LED_TOGGLE", peerMac1);
+            sendMessage("LED_TOGGLE", peerMac2);
         }
         else if (input == "ON") {
-            sendMessage("LED_ON", peerMac);
+            sendMessage("LED_ON", peerMac1);
+            sendMessage("LED_ON", peerMac2);
         }
         else if (input == "OFF") {
-            sendMessage("LED_OFF", peerMac);
+            sendMessage("LED_OFF", peerMac1);
+            sendMessage("LED_OFF", peerMac2);
         }
     }
 }
