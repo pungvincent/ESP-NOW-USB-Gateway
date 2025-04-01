@@ -34,7 +34,7 @@ Below is a rough schematic overview of the project:
 
 Below is a rough schematic overview of the current project:
 
-<img src="docs/images/Current_project_5.jpg" alt="Current_project_5" width="900" height="500">
+<img src="docs/images/Current_project_6.jpg" alt="Current_project_6" width="900" height="500">
 
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
