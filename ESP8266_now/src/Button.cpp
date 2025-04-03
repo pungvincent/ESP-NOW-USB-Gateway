@@ -6,8 +6,9 @@ void Button::setup() {
 }
 
 void Button::loop() {
-    if (digitalRead(pin) == HIGH) {
+    static unsigned long lastPressTime = 0;
+    if (digitalRead(pin) == HIGH && millis() - lastPressTime > 500) {
         sendMessage("BUTTON_PRESSED");
-        delay(500); // Debounce
+        lastPressTime = millis();
     }
 }
