@@ -9,9 +9,9 @@ uint8_t esp32Mac[] = {0x7C, 0x9E, 0xBD, 0x4C, 0xE8, 0x0C};
 /* -----------------
    Declare all modules
    ----------------- */
-BinarySwitch led(4); // LED switch on pin 4
-Button button(5);    // Button on pin 5
-Relay relay(16);      // Relay on pin 16
+BinarySwitch led(4,"Switch1"); // LED switch on pin 4
+Button button(5, "Button1");    // Button on pin 5
+Relay relay(16, "Relay1");      // Relay on pin 16
 
 void setup() {
     Serial.begin(115200);

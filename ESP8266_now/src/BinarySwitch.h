@@ -7,7 +7,7 @@
 
 class BinarySwitch : public Module {
 public:
-    BinarySwitch(int p) : Module(p, BINARY_SWITCH) {} // Set the type to BINARY_SWITCH
+    BinarySwitch(int pi, const char* n) : Module(pi, BINARY_SWITCH, n) {} // Set the type to BINARY_SWITCH
     
     void setup() override;
     void Received_data(esp_now_message incomingData);
