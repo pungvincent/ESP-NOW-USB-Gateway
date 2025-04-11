@@ -7,7 +7,7 @@
 
 class Button : public Module {
 public:
-    Button(int p) : Module(p, BUTTON) {} // Constructor
+    Button(int pi, const char* n) : Module(pi, BUTTON, n) {} // Constructor
 
     void setup() override;
     void loop();

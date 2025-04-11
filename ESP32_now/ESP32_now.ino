@@ -57,17 +57,7 @@ void loop() {
     if (Serial.available()) {
         String input = Serial.readStringUntil('\n');
         input.trim();
-        if (input == "TOGGLE") {
-            sendMessage("LED_TOGGLE", peerMac1);
-            sendMessage("LED_TOGGLE", peerMac2);
-        }
-        else if (input == "ON") {
-            sendMessage("LED_ON", peerMac1);
-            sendMessage("LED_ON", peerMac2);
-        }
-        else if (input == "OFF") {
-            sendMessage("LED_OFF", peerMac1);
-            sendMessage("LED_OFF", peerMac2);
-        }
+        sendMessage(input.c_str(), peerMac1);
+        sendMessage(input.c_str(), peerMac2);
     }
 }
