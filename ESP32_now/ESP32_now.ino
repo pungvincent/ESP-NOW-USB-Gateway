@@ -7,7 +7,7 @@ uint8_t peerMac2[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the M
 
 // Structure for ESP-NOW messages
 typedef struct {
-    char msg[32];
+    char msg[256];
 } esp_now_message;
 
 // Callback function for receiving data
@@ -22,9 +22,15 @@ void onDataRecv(const esp_now_recv_info_t *info, const uint8_t *data, int len) {
 void sendMessage(const char *message, uint8_t *mac) {
     esp_now_message msg;
     strncpy(msg.msg, message, sizeof(msg.msg));
-    esp_err_t result = esp_now_send(mac, (uint8_t*)&msg, sizeof(msg));
+
+    //Maximum ESP-NOW payload: ~250 bytes so we need to send only the actual length of the message
+    // Send only the actual length (plus null terminator)
+    int lengthToSend = strlen(msg.msg) + 1;
+    esp_err_t result = esp_now_send(mac, (uint8_t*)&msg, lengthToSend);
+
     Serial.println(result == ESP_OK ? "Message sent!" : "Failed to send message");
 }
+
 
 void setup() {
     Serial.begin(115200);

@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Communication.h"
 #include <Arduino.h>
+#include <ArduinoJson.h>
 
 class BinarySwitch : public Module {
 public:

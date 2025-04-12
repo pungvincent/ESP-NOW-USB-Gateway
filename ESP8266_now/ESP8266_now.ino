@@ -5,12 +5,13 @@
 #include "src/Communication.h"
 
 uint8_t esp32Mac[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with actual MAC address
+
 /* -----------------
    Declare all modules
    ----------------- */
-BinarySwitch led(4,"Switch1"); // LED switch on pin 4
-Button button(5, "Button1");    // Button on pin 5
-Relay relay(16, "Relay1");      // Relay on pin 16
+BinarySwitch led(4,"switch1"); // LED switch on pin 4
+Button button(5, "button1");    // Button on pin 5
+Relay relay(16, "relay1");      // Relay on pin 16
 
 void setup() {
     Serial.begin(115200);

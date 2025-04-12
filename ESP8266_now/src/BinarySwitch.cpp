@@ -5,6 +5,7 @@ void BinarySwitch::setup() {
 }
 
 void BinarySwitch::Received_data(esp_now_message incomingData) {
+    
     if (strncmp(incomingData.msg, "LED_TOGGLE", sizeof(incomingData.msg)) == 0) {
         digitalWrite(pin, !digitalRead(pin)); // Toggle LED state
     } else if (strncmp(incomingData.msg, "LED_ON", sizeof(incomingData.msg)) == 0) {
