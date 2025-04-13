@@ -9,9 +9,10 @@ uint8_t esp32Mac[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with actua
 /* -----------------
    Declare all modules
    ----------------- */
-BinarySwitch led(4,"switch1"); // LED switch on pin 4
-Button button(5, "button1");    // Button on pin 5
-Relay relay(16, "relay1");      // Relay on pin 16
+BinarySwitch led1(4,"switch1"); // LED switch on pin 4
+BinarySwitch led2(14,"switch2"); // LED switch on pin 14
+Button button1(5, "button1");    // Button on pin 5
+Relay relay1(16, "relay1");      // Relay on pin 16
 
 void setup() {
     Serial.begin(115200);
@@ -33,17 +34,19 @@ void setup() {
     /* -----------------
        Setup all modules
        ----------------- */
-    led.setup();
-    button.setup();
-    relay.setup();
+    led1.setup();
+    led2.setup();
+    button1.setup();
+    relay1.setup();
 
     /* ----------------------------
        Register modules as receivers
        ---------------------------- */
-    registerReceiver(&led);
-    registerReceiver(&relay);
+    registerReceiver(&led1);
+    registerReceiver(&led2);
+    registerReceiver(&relay1);
 }
 
 void loop() {
-    button.loop(); // Read button state
+    button1.loop(); // Read button state
 }

@@ -31,25 +31,24 @@ void onDataRecv(uint8_t *mac, uint8_t *data, uint8_t len) {
     }
 
     // Example of reading JSON fields
-    const char* type = doc["type"];
-    const char* name = doc["name"];
-    const char* cmd = doc["cmd"];
+    const char* Rx_type = doc["type"];
+    const char* Rx_name = doc["name"];
+    const char* Rx_cmd = doc["cmd"];
     //float value = doc["value"];
 
     Serial.print("Parsed type: ");
-    Serial.println(type);
+    Serial.println(Rx_type);
     Serial.print("Parsed name: ");
-    Serial.println(name);
+    Serial.println(Rx_name);
     Serial.print("Parsed cmd: ");
-    Serial.println(cmd);
+    Serial.println(Rx_cmd);
 
-    // Distribute the message to the relevant modules
     for (Module* receiver : receivers) {
         if (receiver->getType() == BINARY_SWITCH) {
-            static_cast<BinarySwitch*>(receiver)->Received_data(incomingData);
+            static_cast<BinarySwitch*>(receiver)->Received_data(Rx_name, Rx_cmd);
         } 
         else if (receiver->getType() == RELAY) {
-            static_cast<Relay*>(receiver)->Received_data(incomingData);
+            static_cast<Relay*>(receiver)->Received_data(Rx_name, Rx_cmd);
         }
     }
 }

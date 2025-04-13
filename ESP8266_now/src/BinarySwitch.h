@@ -11,7 +11,7 @@ public:
     BinarySwitch(int pi, const char* n) : Module(pi, BINARY_SWITCH, n) {} // Set the type to BINARY_SWITCH
     
     void setup() override;
-    void Received_data(esp_now_message incomingData);
+    void Received_data(const char* Rx_name, const char* Rx_cmd);
 };
 
 #endif // BINARY_SWITCH_H

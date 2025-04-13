@@ -10,7 +10,7 @@ public:
     Relay(int pi, const char* n) : Module(pi, RELAY, n) {}  // Constructor
 
     void setup() override;
-    void Received_data(esp_now_message incomingData);
+    void Received_data(const char* Rx_name, const char* Rx_cmd);
 };
 
 #endif // RELAY_H
