@@ -8,7 +8,7 @@
 
 // Struct for ESP-NOW messages
 typedef struct {
-    char msg[256]; // Message buffer (max 256 chars)
+    char msg[128]; // Message buffer (max 256 chars)
 } esp_now_message;
 
 // List of modules that receive messages
