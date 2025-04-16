@@ -4,6 +4,8 @@
 #include "Relay.h"
 #include <ArduinoJson.h>
 
+extern uint8_t esp32Mac[];
+
 std::vector<Module*> receivers; // List of registered receivers
 
 void registerReceiver(Module* module) {
@@ -60,11 +62,12 @@ bool sendMessage(const char *message) {
     esp_now_message mess;
     strncpy(mess.msg, message, sizeof(mess.msg));
 
-    if (esp_now_send(NULL, (uint8_t*)&mess, sizeof(mess)) == 0) {
-        Serial.println("Message sent successfully");
-        return true;
-    } else {
-        Serial.println("Message failed to send");
-        return false;
-    }
+    //Maximum ESP-NOW payload: ~250 bytes so we need to send only the actual length of the message
+    // Send only the actual length (plus null terminator)
+    int lengthToSend = strlen(mess.msg) + 1;
+
+    uint8_t result = esp_now_send(esp32Mac, (uint8_t*)&mess, lengthToSend);
+
+    Serial.println(result == 0 ? "Message sent!" : "Failed to send message");
+    return result == 0 ;
 }

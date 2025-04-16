@@ -6,6 +6,7 @@
 
 uint8_t esp32Mac[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with actual MAC address
 
+
 /* -----------------
    Declare all modules
    ----------------- */
