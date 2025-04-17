@@ -2,10 +2,10 @@
 #include "src/BinarySwitch.h"
 #include "src/Button.h"
 #include "src/Relay.h"
+#include "src/DimmableLight.h"
 #include "src/Communication.h"
 
 uint8_t esp32Mac[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with actual MAC address
-
 
 /* -----------------
    Declare all modules
@@ -14,10 +14,13 @@ BinarySwitch led1(4,"switch1"); // LED switch on pin 4
 BinarySwitch led2(14,"switch2"); // LED switch on pin 14
 Button button1(5, "button1");    // Button on pin 5
 Relay relay1(16, "relay1");      // Relay on pin 16
+DimmableLight dimmablelight1(12, "dimmablelight1");      // dimmablelight on pin 12
 
 void setup() {
     Serial.begin(115200);
     WiFi.mode(WIFI_STA); // Set WiFi mode to station
+    analogWriteFreq(1000);      // 1 kHz
+    analogWriteRange(1023);     // 10 bits resolution
     
     if (esp_now_init() != 0) {
         Serial.println("ESP-NOW initialization failed");
@@ -39,6 +42,7 @@ void setup() {
     led2.setup();
     button1.setup();
     relay1.setup();
+    dimmablelight1.setup();
 
     /* ----------------------------
        Register modules as receivers
@@ -46,6 +50,7 @@ void setup() {
     registerReceiver(&led1);
     registerReceiver(&led2);
     registerReceiver(&relay1);
+    registerReceiver(&dimmablelight1);
 }
 
 void loop() {

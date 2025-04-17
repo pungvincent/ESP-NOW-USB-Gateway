@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include "BinarySwitch.h"
 #include "Relay.h"
+#include "DimmableLight.h"
 #include <ArduinoJson.h>
 
 extern uint8_t esp32Mac[];
@@ -36,6 +37,7 @@ void onDataRecv(uint8_t *mac, uint8_t *data, uint8_t len) {
     const char* Rx_type = doc["type"];
     const char* Rx_name = doc["name"];
     const char* Rx_cmd = doc["cmd"];
+    const int Rx_luminosity = doc["luminosity"];
     //float value = doc["value"];
 
     Serial.print("Parsed type: ");
@@ -44,6 +46,8 @@ void onDataRecv(uint8_t *mac, uint8_t *data, uint8_t len) {
     Serial.println(Rx_name);
     Serial.print("Parsed cmd: ");
     Serial.println(Rx_cmd);
+    Serial.print("Parsed luminosity: ");
+    Serial.println(Rx_luminosity);
 
     for (Module* receiver : receivers) {
         if (receiver->getType() == BINARY_SWITCH) {
@@ -51,6 +55,9 @@ void onDataRecv(uint8_t *mac, uint8_t *data, uint8_t len) {
         } 
         else if (receiver->getType() == RELAY) {
             static_cast<Relay*>(receiver)->Received_data(Rx_name, Rx_cmd);
+        }
+        else if (receiver->getType() == DIMMABLELIGHT) {
+            static_cast<DimmableLight*>(receiver)->Received_data(Rx_name, Rx_cmd, Rx_luminosity);
         }
     }
 }

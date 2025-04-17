@@ -6,6 +6,7 @@
 // Enum to differentiate between module types
 enum ModuleType { 
     BINARY_SWITCH,
+    DIMMABLELIGHT,
     RELAY,
     BUTTON,
     UNKNOWN 
