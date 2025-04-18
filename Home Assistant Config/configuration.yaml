@@ -1,0 +1,12 @@
+shell_command:
+  switch1_on: "python3 /config/send_serial_cmd.py switch1 ON"
+  switch1_off: "python3 /config/send_serial_cmd.py switch1 OFF"
+
+switch:
+  - platform: template
+    switches:
+      switch1:
+        turn_off:
+          - service: shell_command.switch1_off
+        turn_on:
+          - service: shell_command.switch1_on
