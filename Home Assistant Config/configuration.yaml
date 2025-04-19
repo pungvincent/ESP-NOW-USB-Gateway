@@ -1,12 +1,39 @@
 shell_command:
   switch1_on: "python3 /config/send_serial_cmd.py switch1 ON"
   switch1_off: "python3 /config/send_serial_cmd.py switch1 OFF"
+  dimmable_light1_on: "python3 /config/send_serial_cmd.py dimmablelight1 ON"
+  dimmable_light1_off: "python3 /config/send_serial_cmd.py dimmablelight1 OFF"
+  dimmable_light2_on: "python3 /config/send_serial_cmd.py dimmablelight1 ON"
+  dimmable_light2_off: "python3 /config/send_serial_cmd.py dimmablelight1 OFF "
+  dimmable_light2_change: "python3 /config/send_serial_cmd.py {{ name }} {{ cmd }} {{ brightness }}"
 
 switch:
   - platform: template
     switches:
       switch1:
-        turn_off:
-          - service: shell_command.switch1_off
         turn_on:
           - service: shell_command.switch1_on
+        turn_off:
+          - service: shell_command.switch1_off
+
+light:
+  - platform: template
+    lights:
+      light1:
+        friendly_name: "light1"
+        turn_on:
+          - service: shell_command.dimmable_light1_on
+        turn_off:
+          - service: shell_command.dimmable_light1_off
+      light2:
+        friendly_name: "light2"
+        turn_on:
+          - service: shell_command.dimmable_light2_on
+        turn_off:
+          - service: shell_command.dimmable_light2_off
+        set_level:
+          - service: shell_command.dimmable_light2_change
+            data:
+              name: dimmablelight1
+              cmd: CHANGE
+              brightness: "{{ (brightness * 1023 / 255) | int }}" #Convert the interval of 0-255 to 0-1023
