@@ -12,7 +12,7 @@ void DimmableLight::Received_data(const char* Rx_name, const char* Rx_cmd, int R
                 this->luminosity = 0;
             } else if (strcmp(Rx_cmd, "TOGGLE") == 0) {
                 this->luminosity = 0;
-            } else if (strcmp(Rx_cmd, "CHANGE") == 0) {
+            } else if (strcmp(Rx_cmd, "LEVEL") == 0) {
                 this->luminosity = Rx_luminosity;
             }
             //Send the value

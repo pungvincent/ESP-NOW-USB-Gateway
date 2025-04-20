@@ -5,7 +5,6 @@
 uint8_t peerMac1[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the MAC address of ESP8266-1
 uint8_t peerMac2[] = {0xXX, 0xXX, 0xXX, 0xXX, 0xXX, 0xXX}; // Replace with the MAC address of ESP8266-2
 
-
 // Structure for ESP-NOW messages
 typedef struct {
     char msg[256];
@@ -15,7 +14,6 @@ typedef struct {
 void onDataRecv(const esp_now_recv_info_t *info, const uint8_t *data, int len) {
     esp_now_message incomingData;
     memcpy(&incomingData, data, sizeof(incomingData));
-    Serial.print("Message received: ");
     Serial.println(incomingData.msg);
 }
 
