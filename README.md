@@ -12,16 +12,19 @@ Below is a rough schematic overview of the project:
 
 <img src="docs/images/Project_plan.jpg" alt="Project_plan" width="900" height="462">
 
-## Getting Started
-
-### Hardware Requirements
-- ESP32 or ESP8266 as the USB gateway.
-- Additional ESP32/ESP8266 devices to communicate with.
+## Hardware Requirements
+- **Home Assistant** on a server like a Raspberry pi.
+- ESP32 as the USB gateway.
+- Additional ESP8266 devices to communicate with.
 - USB-UART adapter for serial communication.
 
-### Software Requirements
+## Software Requirements
 - **Arduino IDE** to program the ESP.
 - **Python & PySerial** (for testing communication on PC).
+
+   → [Here's the steps to configure Arduino for ESP32/ESP8266](Docs/arduino_ESP32_ESP8266_manual.md)
+
+## Getting Started
 
 ### Current project
 
