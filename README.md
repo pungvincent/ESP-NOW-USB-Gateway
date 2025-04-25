@@ -22,9 +22,30 @@ Below is a rough schematic overview of the project:
 - **Arduino IDE** to program the ESP.
 - **Python & PySerial** (for testing communication on PC).
 
-   → [Here's the steps to configure Arduino for ESP32/ESP8266](Docs/arduino_ESP32_ESP8266_manual.md)
+→ [Here's the steps to configure Arduino for ESP32/ESP8266](Docs/arduino_ESP32_ESP8266_manual.md)
 
 ## Getting Started
+
+### First steps
+   
+   1. Clone the Project from GitHub using Git (recommended):
+
+      To get the project source code, you'll need to clone the GitHub repository.
+      If you have Git installed, open a terminal or command prompt and run:
+
+      ```bash
+      git clone https://github.com/pungvincent/ESP-NOW-USB-Gateway.git
+      ```
+   2. Retrieve MAC Addresses
+      To enable communication between ESP devices using ESP-NOW, you first need to obtain the MAC address of each device.
+      Use the MAC_Address_ESP32.ino and MAC_Address_ESP8266.ino sketches to retrieve the MAC addresses for the ESP32 and ESP8266, respectively.
+
+      → [Follow the step-by-step guide here](Docs/Get_MAC_Adress_mini_manual.md)
+
+      Once you've successfully retrieved the MAC addresses, you need to insert them into the communication sketches: ESP32_now.ino and ESP8266_now.ino.
+
+      → [Instructions for that are available here](Docs/Set_MAC_Adress_mini_manual.md)
+      
 
 ### Current project
 
