@@ -53,6 +53,9 @@ This project currently supports the integration of switch relay modules and dimm
  1. [Switch/Relay](Docs/SwitchRelay_summary.md)
  2. [Dimmable light](Docs/Dimmable_light_summary.md)
 
+Below is a rough schematic overview of the current project:
+
+<img src="Docs/images/Flowchart.png" alt="Flowchart" width="900" height="440">
 
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
