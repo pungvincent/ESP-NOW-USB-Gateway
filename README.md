@@ -22,7 +22,7 @@ Below is a rough schematic overview of the project:
 - **Arduino IDE** to program the ESP.
 - **Python & PySerial** (for testing communication on PC).
 
-→ [Here's the steps to configure Arduino for ESP32/ESP8266](Docs/arduino_ESP32_ESP8266_manual.md)
+→ [Here's the steps to configure Arduino for ESP32/ESP8266](Docs/Arduino_ESP32_ESP8266_manual.md)
 
 ## Getting Started
 
@@ -45,13 +45,14 @@ Below is a rough schematic overview of the project:
       Once you've successfully retrieved the MAC addresses, you need to insert them into the communication sketches: ESP32_now.ino and ESP8266_now.ino.
 
       → [Instructions for that are available here](Docs/Set_MAC_Adress_mini_manual.md)
-      
 
-### Current project
+### Modules
 
-Below is a rough schematic overview of the current project:
+This project currently supports the integration of switch relay modules and dimmable light modules, with more device options coming soon.
 
-<img src="docs/images/Switch_and_relay.png" alt="Current_project_5" width="900" height="362">
+ 1. [Switch/Relay](Docs/SwitchRelay_summary.md)
+ 2. [Dimmable light](Docs/Dimmable_light_summary.md)
+
 
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
