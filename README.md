@@ -48,6 +48,8 @@ Below is a rough schematic overview of the project:
 
 ### Modules
 
+#### Output device
+
 This project currently supports the integration of switch relay modules and dimmable light modules, with more device options coming soon.
 
  1. [Switch/Relay](Docs/SwitchRelay_summary.md)
@@ -56,6 +58,12 @@ This project currently supports the integration of switch relay modules and dimm
 Below is a rough schematic overview of the current project:
 
 <img src="Docs/images/Flowchart.png" alt="Flowchart" width="900" height="440">
+
+#### Input device
+
+This project currently includes a single input device: the button module, used to trigger actions based on physical presses — with additional input types planned for future updates.
+
+1. [Button](Docs/Button_summary.md)
 
 ### Installation
 1. **Flash the ESP-NOW Gateway Firmware**
